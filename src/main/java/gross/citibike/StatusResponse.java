@@ -1,12 +1,14 @@
 package gross.citibike;
 
 import java.util.List;
+import java.util.Map;
 
 public class StatusResponse {
     public Data data;
 
     public class Data {
-        public List<Status> stations;
+        public List<StatusResponse.Status> stations;
+        // public Map<String, Status> stations;
     }
 
     public class Status {

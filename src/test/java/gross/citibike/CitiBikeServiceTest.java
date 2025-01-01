@@ -20,6 +20,7 @@ class CitiBikeServiceTest {
         assertNotNull(stationInfo.station_type);
         assertNotNull(stationInfo.station_id);
         assertNotNull(stationInfo.capacity);
+        System.out.println(response.data.stations.size());
     }
 
     @Test
@@ -34,5 +35,6 @@ class CitiBikeServiceTest {
         assertNotNull(stationStatus.num_bikes_available);
         assertNotNull(stationStatus.num_docks_available);
         assertNotNull(stationStatus.num_ebikes_available);
+        System.out.println(response.data.stations.size());
     }
 }
