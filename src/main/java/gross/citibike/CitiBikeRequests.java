@@ -1,7 +1,6 @@
 package gross.citibike;
 
 import java.util.List;
-import java.util.Map;
 
 public class CitiBikeRequests {
 
@@ -32,34 +31,34 @@ public class CitiBikeRequests {
 
     // find closest station with available bikes to given location
     public StationResponse.StationInfo findClosestStationWithBikes(double lat, double lon) {
-        // set distance and retVal according to first station in list
-        StationResponse.StationInfo retVal = null;
+        // set distance and closestStation according to first station in list
+        StationResponse.StationInfo closestStation = null;
         double distance = Double.MAX_VALUE;
 
         for (StationResponse.StationInfo station : stations) {
             double currentDistance = findDistance(lat, lon, station.lat, station.lon);
             if (distance > currentDistance && hasBikesAvail(station.station_id)) {
                 distance = currentDistance;
-                retVal = station;
+                closestStation = station;
             }
         }
-        return retVal;
+        return closestStation;
     }
 
     // find closest station with available slots to given location
     public StationResponse.StationInfo findClosestStationWithSlots(double lat, double lon) {
-        // set distance and retVal according to first station in list
-        StationResponse.StationInfo retVal = null;
+        // set distance and closestStation according to first station in list
+        StationResponse.StationInfo closestStation = null;
         double distance = Double.MAX_VALUE;
 
         for (StationResponse.StationInfo station : stations) {
             double currentDistance = findDistance(lat, lon, station.lat, station.lon);
             if (distance > currentDistance && hasSlotsAvail(station.station_id)) {
                 distance = currentDistance;
-                retVal = station;
+                closestStation = station;
             }
         }
-        return retVal;
+        return closestStation;
     }
 
     // calculate distance between 2 sets of lat-lon points
@@ -69,33 +68,29 @@ public class CitiBikeRequests {
         double diffLon = lon2 - lon1;
 
         // Adjust longitude based on latitude
-        double avg_lat = (lat1 + lat2) / 2;
-        double dx = diffLon * Math.cos(Math.toRadians(avg_lat));  // Convert avg_lat to radians for cosine
+        double avgLat = (lat1 + lat2) / 2;
+        double dx = diffLon * Math.cos(Math.toRadians(avgLat));  // Convert avgLat to radians for cosine
         double dy = diffLat;
 
         //Calculate distance using Pythagorean theorem
-        double distance_km = 111.32 * Math.sqrt(Math.pow(dx, 2.0) + Math.pow(dy, 2.0));
-        return distance_km;
+        double distance = 111.32 * Math.sqrt(Math.pow(dx, 2.0) + Math.pow(dy, 2.0));
+        return distance;
     }
 
     // check if station has bikes available
     public boolean hasBikesAvail(String id) {
-        for (StatusResponse.Status status : statuses) {
-            if (status.station_id.equals(id)) {
-                if ((status.num_bikes_available > 0) || (status.num_ebikes_available > 0)) {
-                    return true;
-                }
-            }
+        StatusResponse.Status status = findStatus(id);
+        if ((status.num_bikes_available > 0) || (status.num_ebikes_available > 0)) {
+            return true;
         }
         return false;
     }
 
     // check if station has slots available
     public boolean hasSlotsAvail(String id) {
-        for (StatusResponse.Status status : statuses) {
-            if (status.station_id.equals(id) && (status.num_docks_available > 0)) {
-                return true;
-            }
+        StatusResponse.Status status = findStatus(id);
+        if (status.num_docks_available > 0) {
+            return true;
         }
         return false;
     }

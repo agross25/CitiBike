@@ -1,7 +1,6 @@
 package gross.citibike;
 
 import java.util.List;
-import java.util.Map;
 
 public class StatusResponse {
     public Data data;

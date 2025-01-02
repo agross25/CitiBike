@@ -10,14 +10,14 @@ class CitiBikeRequestsTest {
     void findStatus() {
         // given
         CitiBikeRequests request = new CitiBikeRequests();
-        String station_id = "4efda436-cd19-4ec3-acc7-1a622f723264";
+        String stationId = "4efda436-cd19-4ec3-acc7-1a622f723264";
 
         // when
-        StatusResponse.Status status = request.findStatus(station_id);
+        StatusResponse.Status status = request.findStatus(stationId);
 
         // then
         assertNotNull(status);
-        assertEquals(station_id, status.station_id);
+        assertEquals(stationId, status.station_id);
     }
 
     @Test
