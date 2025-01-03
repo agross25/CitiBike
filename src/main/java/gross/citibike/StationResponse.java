@@ -11,11 +11,13 @@ public class StationResponse {
     }
 
     public class StationInfo {
+        //CHECKSTYLE:OFF
         public String station_id;
         public String name;
         public double lat;
         public double lon;
         public String station_type;
         public int capacity;
+        //CHECKSTYLE:ON
     }
 }

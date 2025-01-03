@@ -11,9 +11,11 @@ public class StatusResponse {
     }
 
     public class Status {
+        //CHECKSTYLE:OFF
         public String station_id;
         public int num_ebikes_available;
         public int num_docks_available;
         public int num_bikes_available;
+        //CHECKSTYLE:ON
     }
 }
