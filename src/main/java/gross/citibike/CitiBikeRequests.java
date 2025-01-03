@@ -80,19 +80,13 @@ public class CitiBikeRequests {
     // check if station has bikes available
     public boolean hasBikesAvail(String id) {
         StatusResponse.Status status = findStatus(id);
-        if ((status.num_bikes_available > 0) || (status.num_ebikes_available > 0)) {
-            return true;
-        }
-        return false;
+        return status.num_bikes_available > 0 || status.num_ebikes_available > 0;
     }
 
     // check if station has slots available
     public boolean hasSlotsAvail(String id) {
         StatusResponse.Status status = findStatus(id);
-        if (status.num_docks_available > 0) {
-            return true;
-        }
-        return false;
+        return status.num_docks_available > 0;
     }
 
 }
