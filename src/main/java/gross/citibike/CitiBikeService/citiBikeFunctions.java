@@ -1,19 +1,19 @@
-package gross.citibike;
+package gross.citibike.CitiBikeService;
 
 import java.util.List;
 
-public class CitiBikeRequests {
+public class citiBikeFunctions {
 
     private List<StationResponse.StationInfo> stations;
     private List<StatusResponse.Status> statuses;
 
-    public CitiBikeRequests() {
+    public citiBikeFunctions() {
         CitiBikeService service = new CitiBikeServiceFactory().getService();
         stations = service.getStationResponse().blockingGet().data.stations;
         statuses = service.getStatusResponse().blockingGet().data.stations;
     }
 
-    public CitiBikeRequests(CitiBikeService cbs) {
+    public citiBikeFunctions(CitiBikeService cbs) {
         CitiBikeService service = cbs;
         stations = service.getStationResponse().blockingGet().data.stations;
         statuses = service.getStatusResponse().blockingGet().data.stations;

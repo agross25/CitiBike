@@ -1,4 +1,4 @@
-package gross.citibike;
+package gross.citibike.CitiBikeService;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;

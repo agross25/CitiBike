@@ -1,4 +1,4 @@
-package gross.citibike;
+package gross.citibike.CitiBikeService;
 
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.GET;

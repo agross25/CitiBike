@@ -1,5 +1,9 @@
 package gross.citibike;
 
+import gross.citibike.CitiBikeService.CitiBikeService;
+import gross.citibike.CitiBikeService.CitiBikeServiceFactory;
+import gross.citibike.CitiBikeService.StationResponse;
+import gross.citibike.CitiBikeService.StatusResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
