@@ -4,8 +4,8 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.google.gson.Gson;
-import gross.citibike.citiBikeService.StationResponse;
-import gross.citibike.citiBikeService.CitiBikeFunctions;
+import gross.citibike.service.StationResponse;
+import gross.citibike.service.CitiBikeFunctions;
 
 public class CitiBikeRequestHandler implements RequestHandler<APIGatewayProxyRequestEvent, Response> {
     @Override

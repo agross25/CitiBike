@@ -1,6 +1,6 @@
 package gross.citibike.lambda;
 
-import gross.citibike.citiBikeService.StationResponse;
+import gross.citibike.service.StationResponse;
 
 public class Response {
 
