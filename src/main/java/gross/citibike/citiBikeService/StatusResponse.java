@@ -1,4 +1,4 @@
-package gross.citibike.CitiBikeService;
+package gross.citibike.citiBikeService;
 
 import java.util.List;
 

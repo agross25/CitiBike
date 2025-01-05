@@ -2,8 +2,8 @@ package gross.citibike;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import gross.citibike.Lambda.CitiBikeRequestHandler;
-import gross.citibike.Lambda.Response;
+import gross.citibike.lambda.CitiBikeRequestHandler;
+import gross.citibike.lambda.Response;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;

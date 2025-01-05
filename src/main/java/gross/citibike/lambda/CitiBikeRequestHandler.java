@@ -1,11 +1,11 @@
-package gross.citibike.Lambda;
+package gross.citibike.lambda;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.google.gson.Gson;
-import gross.citibike.CitiBikeService.StationResponse;
-import gross.citibike.CitiBikeService.citiBikeFunctions;
+import gross.citibike.citiBikeService.StationResponse;
+import gross.citibike.citiBikeService.CitiBikeFunctions;
 
 public class CitiBikeRequestHandler implements RequestHandler<APIGatewayProxyRequestEvent, Response> {
     @Override
@@ -13,7 +13,7 @@ public class CitiBikeRequestHandler implements RequestHandler<APIGatewayProxyReq
         String body = event.getBody();
         Gson gson = new Gson();
         Request request = gson.fromJson(body, Request.class);
-        citiBikeFunctions func = new citiBikeFunctions();
+        CitiBikeFunctions func = new CitiBikeFunctions();
         StationResponse.StationInfo start = func.findClosestStationWithBikes(request.from.lat, request.from.lon);
         StationResponse.StationInfo end = func.findClosestStationWithSlots(request.to.lat, request.to.lon);
         return new Response(request.from, start, end, request.to);

@@ -1,7 +1,6 @@
-package gross.citibike.CitiBikeService;
+package gross.citibike.citiBikeService;
 
 import java.util.List;
-import java.util.Map;
 
 public class StationResponse {
     public Data data;

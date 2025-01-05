@@ -1,8 +1,8 @@
 package gross.citibike;
 
-import gross.citibike.CitiBikeService.citiBikeFunctions;
-import gross.citibike.CitiBikeService.StationResponse;
-import gross.citibike.CitiBikeService.StatusResponse;
+import gross.citibike.citiBikeService.CitiBikeFunctions;
+import gross.citibike.citiBikeService.StationResponse;
+import gross.citibike.citiBikeService.StatusResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +12,7 @@ class CitiBikeFunctionsTest {
     @Test
     void findStatus() {
         // given
-        citiBikeFunctions request = new citiBikeFunctions();
+        CitiBikeFunctions request = new CitiBikeFunctions();
         String stationId = "4efda436-cd19-4ec3-acc7-1a622f723264";
 
         // when
@@ -26,7 +26,7 @@ class CitiBikeFunctionsTest {
     @Test
     void findClosestStationWithBikes() {
         // given
-        citiBikeFunctions request = new citiBikeFunctions();
+        CitiBikeFunctions request = new CitiBikeFunctions();
         double lat = 40.642703;
         double lon = -74.009441;
 
@@ -41,7 +41,7 @@ class CitiBikeFunctionsTest {
     @Test
     void findClosestStationWithSlots() {
         // given
-        citiBikeFunctions request = new citiBikeFunctions();
+        CitiBikeFunctions request = new CitiBikeFunctions();
         double lat = 40.642703;
         double lon = -74.009441;
 
