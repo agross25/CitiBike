@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -28,6 +29,6 @@ public class CitiBikeRequestHandlerTest {
 
         //then
         assertEquals("Lenox Ave & W 146 St", response.start.name);
-        assertEquals("Berry St & N 8 St", response.end.name);
+        assertEquals("N 6 St & Bedford Ave", response.end.name);
     }
 }
