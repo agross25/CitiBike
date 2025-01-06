@@ -23,6 +23,7 @@ import java.util.Set;
 public class MapComponent extends JXMapViewer {
     private WaypointPainter<Waypoint> waypointPainter = new WaypointPainter<>();
     private Set<Waypoint> waypoints = new HashSet<>();
+    private RoutePainter routePainter;
     private CompoundPainter<JXMapViewer> painter;
 
     public MapComponent() {
@@ -67,8 +68,10 @@ public class MapComponent extends JXMapViewer {
         return waypoints;
     }
 
-    public void setRoutePainter(Painter<JXMapViewer> routePainter) {
-        painter.setPainters(waypointPainter, routePainter);
-        repaint();
+    public void setRoutePainter(RoutePainter rp) {
+        this.routePainter = rp;
+        painter = new CompoundPainter<>(List.of(routePainter, waypointPainter));
+        this.setOverlayPainter(painter);
+        this.repaint();
     }
 }
