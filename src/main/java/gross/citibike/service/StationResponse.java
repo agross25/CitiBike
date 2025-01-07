@@ -15,8 +15,6 @@ public class StationResponse {
         public String name;
         public double lat;
         public double lon;
-        public String station_type;
-        public int capacity;
         //CHECKSTYLE:ON
     }
 }
