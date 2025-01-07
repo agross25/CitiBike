@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LambdaServiceFactory {
     public LambdaService getService() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("\"https://6yearbnvvznt4yiaqdk2xsucua0gokfz.lambda-url.us-east-2.on.aws/")
+                .baseUrl("https://6yearbnvvznt4yiaqdk2xsucua0gokfz.lambda-url.us-east-2.on.aws/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .build();
