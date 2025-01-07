@@ -68,7 +68,7 @@ public class MapController {
                 frame.getStartPointLabel().setText("Start: ");
                 frame.getEndPointLabel().setText("End: ");
                 frame.getMapComponent().setupMap(new GeoPosition(40.642703, -74.009441));
-                // Remove the route painter by setting it to null or an empty painter
+                // Remove the painted route by resetting route painter
                 frame.getMapComponent().setRoutePainter(new RoutePainter(new ArrayList<>()));
                 frame.repaint();
             }

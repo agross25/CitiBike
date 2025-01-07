@@ -13,12 +13,6 @@ public class CitiBikeFunctions {
         statuses = service.getStatusResponse().blockingGet().data.stations;
     }
 
-    public CitiBikeFunctions(CitiBikeService cbs) {
-        CitiBikeService service = cbs;
-        stations = service.getStationResponse().blockingGet().data.stations;
-        statuses = service.getStatusResponse().blockingGet().data.stations;
-    }
-
     // find status of a station given its id
     public StatusResponse.Status findStatus(String id) {
         for (StatusResponse.Status status : statuses) {
