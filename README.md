@@ -13,14 +13,15 @@ Map Application is split into 3 parts: Component, Frame, Controller
     - uses a BorderLayout to center map with a GridBagLayout to hold Labels and Buttons below the map
     - Start and End labels to display coordinates of the selected Start and End points the user wishes to travel between
     - Clear Button to clear the user's selections
+      - sets an ActionListener for the Clear Button that clears the waypoints, painted route, and re-centers the map
     - Map Button to map out the fastest possible route between selected points
+      - sets an ActionListener for the Map Button that instructs controller to call lambda
+
 3. MapController
     - as the controller, it has a frame to display and controls the functionality of the frame's elements
-    - sets an ActionListener for the Map Button:
-      - calls LambdaServiceFactory (explained below) to call our CitiBikeService lambda which calculates fastest route between selected points
-      - calls displayRoute() method to paint the route via the component
     - implements an addPoint() method which adds a waypoint wherever the user clicks (up to 2 maximum)
-    - sets an ActionListener for the Clear Button that clears the waypoints, painted route, and re-centers the map
+    - findBestRoute() creates a LambdaServiceFactory (explained below) to call our CitiBikeService lambda which calculates fastest route between selected points
+    - calls displayRoute() method to paint the route via the component
 
 # Map Screenshots
 
