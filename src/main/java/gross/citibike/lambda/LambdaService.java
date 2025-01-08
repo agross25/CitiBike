@@ -5,6 +5,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface LambdaService {
-    @POST("https://6yearbnvvznt4yiaqdk2xsucua0gokfz.lambda-url.us-east-2.on.aws/")
+    @POST("/")
     Single<Response> getStationResponse(@Body Request request);
 }

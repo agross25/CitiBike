@@ -45,13 +45,20 @@ public class MapController {
             positions.add(gp);
         }
         Request request = new Request(positions.get(0), positions.get(1));
-        Response response = lambdaService.getStationResponse(request).blockingGet();
-        StationResponse.StationInfo startStation = response.start;
-        StationResponse.StationInfo endStation = response.end;
-        // Convert start and end to GeoPosition to display route
-        GeoPosition start = new GeoPosition(startStation.lat, startStation.lon);
-        GeoPosition end = new GeoPosition(endStation.lat, endStation.lon);
-        displayRoute(positions.get(0), start, end, positions.get(1));
+        lambdaService.getStationResponse(request)
+                .subscribe(
+                        response -> {
+                            StationResponse.StationInfo startStation = response.start;
+                            StationResponse.StationInfo endStation = response.end;
+                            GeoPosition start = new GeoPosition(startStation.lat, startStation.lon);
+                            GeoPosition end = new GeoPosition(endStation.lat, endStation.lon);
+                            displayRoute(positions.get(0), start, end, positions.get(1));
+                        },
+                        throwable -> {
+                            // Handle error here
+                            throwable.printStackTrace();
+                        }
+                );
     }
 
     public void displayRoute(GeoPosition from, GeoPosition start, GeoPosition end, GeoPosition to) {
