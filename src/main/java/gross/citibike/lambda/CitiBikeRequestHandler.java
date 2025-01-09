@@ -6,8 +6,10 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.google.gson.Gson;
 import gross.citibike.service.StationResponse;
 import gross.citibike.service.CitiBikeFunctions;
+import gross.citibike.service.StationsCache;
 
 public class CitiBikeRequestHandler implements RequestHandler<APIGatewayProxyRequestEvent, Response> {
+
     @Override
     public Response handleRequest(APIGatewayProxyRequestEvent event, Context context) {
         String body = event.getBody();

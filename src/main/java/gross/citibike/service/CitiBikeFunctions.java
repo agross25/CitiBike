@@ -1,15 +1,19 @@
 package gross.citibike.service;
 
+import software.amazon.awssdk.services.s3.S3Client;
+
 import java.util.List;
 
 public class CitiBikeFunctions {
-
+    private StationsCache stationsCache;
+    private final String bucketName = "gross.citibike";
     private List<StationResponse.StationInfo> stations;
     private List<StatusResponse.Status> statuses;
 
     public CitiBikeFunctions() {
+        stationsCache = new StationsCache();
         CitiBikeService service = new CitiBikeServiceFactory().getService();
-        stations = service.getStationResponse().blockingGet().data.stations;
+        stations = stationsCache.getStations().data.stations;
         statuses = service.getStatusResponse().blockingGet().data.stations;
     }
 
