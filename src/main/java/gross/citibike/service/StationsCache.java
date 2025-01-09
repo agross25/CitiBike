@@ -15,8 +15,8 @@ import java.time.Duration;
 import java.time.Instant;
 
 public class StationsCache {
-    private final String BUCKET_NAME = "gross.citibike";
-    private final String KEY_NAME = "station_information.json";
+    private final String bucketName = "gross.citibike";
+    private final String keyName = "station_information.json";
     private S3Client s3Client;
     private StationResponse stations;
     private Instant lastModified;
@@ -57,8 +57,8 @@ public class StationsCache {
         try {
             String content = gson.toJson(stations);
             PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-                    .bucket(BUCKET_NAME)
-                    .key(KEY_NAME)
+                    .bucket(bucketName)
+                    .key(keyName)
                     .build();
             s3Client.putObject(putObjectRequest, RequestBody.fromString(content));
         } catch (Exception e) {
@@ -70,8 +70,8 @@ public class StationsCache {
         StationResponse response = new StationResponse();
         try {
             GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-                    .bucket(BUCKET_NAME)
-                    .key(KEY_NAME)
+                    .bucket(bucketName)
+                    .key(keyName)
                     .build();
             InputStream in = s3Client.getObject(getObjectRequest);
             response = gson.fromJson(new InputStreamReader(in), StationResponse.class);
@@ -84,8 +84,8 @@ public class StationsCache {
     public Instant readLastModified() {
         try {
             HeadObjectRequest headObjectRequest = HeadObjectRequest.builder()
-                    .bucket(BUCKET_NAME)
-                    .key(KEY_NAME)
+                    .bucket(bucketName)
+                    .key(keyName)
                     .build();
             HeadObjectResponse headObjectResponse = s3Client.headObject(headObjectRequest);
             return headObjectResponse.lastModified();
