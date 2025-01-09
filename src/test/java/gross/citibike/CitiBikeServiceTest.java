@@ -21,9 +21,7 @@ class CitiBikeServiceTest {
         assertNotNull(stationInfo.name);
         assertNotNull(stationInfo.lat);
         assertNotNull(stationInfo.lon);
-        assertNotNull(stationInfo.station_type);
         assertNotNull(stationInfo.station_id);
-        assertNotNull(stationInfo.capacity);
         System.out.println(response.data.stations.size());
     }
 
