@@ -33,7 +33,7 @@ public class StationsCache {
     public StationResponse getStations() {
         if (stations != null) {
             // if stations is updated, return it
-            if (lastModified.isAfter(Instant.now().minus(Duration.ofHours(1)))) {
+            if (lastModified != null && lastModified.isAfter(Instant.now().minus(Duration.ofHours(1)))) {
                 return stations;
             } else { // if stations need to be updated, reload and update lastModified
                 stations = service.getStationResponse().blockingGet();
@@ -41,7 +41,7 @@ public class StationsCache {
                 writeToS3(stations);
             }
         } else { // read stations info from S3 and read last modified
-            if (lastModified.isAfter(Instant.now().minus(Duration.ofHours(1)))) {
+            if (lastModified != null && lastModified.isAfter(Instant.now().minus(Duration.ofHours(1)))) {
                 stations = readFromS3();
                 lastModified = readLastModified();
             } else { // if stations need to be updated, reload and update lastModified
