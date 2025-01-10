@@ -20,11 +20,13 @@ import java.util.Set;
 import org.jxmapviewer.viewer.Waypoint;
 
 public class MapController {
+    private LambdaService lambdaService;
     private MapComponent mapComponent;
     private int maxPoints = 2;
 
     public MapController() {
         mapComponent = new MapComponent();
+        lambdaService = new LambdaServiceFactory().getService();
     }
 
     public MapComponent getComponent() {
@@ -38,7 +40,6 @@ public class MapController {
     }
 
     public void findBestRoute() {
-        LambdaService lambdaService = new LambdaServiceFactory().getService();
         List<GeoPosition> positions = new ArrayList<>();
         for (Waypoint wp : mapComponent.getWaypoints()) {
             GeoPosition gp = wp.getPosition();
