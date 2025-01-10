@@ -10,8 +10,8 @@ public class CitiBikeFunctions {
     private List<StationResponse.StationInfo> stations;
     private List<StatusResponse.Status> statuses;
 
-    public CitiBikeFunctions() {
-        stationsCache = new StationsCache();
+    public CitiBikeFunctions(StationsCache cache) {
+        stationsCache = cache;
         CitiBikeService service = new CitiBikeServiceFactory().getService();
         stations = stationsCache.getStations().data.stations;
         statuses = service.getStatusResponse().blockingGet().data.stations;
